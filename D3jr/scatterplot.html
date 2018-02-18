@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3.js Key Concepts</title>
+	<style type="text/css">
+		/*making the background grey*/
+		body{
+			background-color: #ccc;
+			width: 100%;
+		}
+		/*The chart will have a black border*/
+		#chart{
+			background-color: #ccc;
+			width: 100px;
+			height: 500px;
+			margin: 50px auto;
+			border: solid 1px #000;
+		}
+		svg{
+			background-color: #fff; 
+		}
+		.dot{
+			stroke: #000;
+			stroke-width: 1px;
+		}
+	</style>
+	<script type="text/javascript" src="d3.min.js"></script>
+</head>
+<body>
+	<div id="chart"></div>
+	<script type="text/javascript">
+		var width = 1000, height = 500;
+
+		//scaling
+		xScale = d3.scaleLinear()
+			.domain([0, 40]) //input values
+			.range([0,500]); //output values
+
+		var circles;
+		var svg = d3.select('#chart')
+			.append('svg')
+			.attr('width', width + 'px')
+			.attr('width', height + 'px');
+
+			
+			//reading a csv file
+			d3.csv('boston-housing.csv', function(error, data){
+				// console.log(data);
+				svg.selectAll('.dot')
+					.data(data)
+					.enter()
+					.append('circle')
+					.attr('cx', function(d){
+						return xScale(d.poor);
+					})
+					.attr('cy', function(d){
+						return d.rooms * 50;
+					})
+					.attr('r', function(d){
+						return d.value/2;
+					})
+					.attr('fill', #000)
+					.style('opacity', 0.5)
+			});
+	</script>
+</body>
+</html>

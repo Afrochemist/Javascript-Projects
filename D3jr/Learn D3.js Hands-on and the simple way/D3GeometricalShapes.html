@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Adding attributes and selection to SVG element</title>
+	<style>
+		.blueBlack{
+			background : blue;
+		}
+	</style>
+</head>
+<body>
+	<script src="d3.v3.min.js"></script>
+	<script>
+		var svg = d3.select("body").append("svg").attr("width","300px")
+				.attr("height","100px").attr("class","blueBlack");
+
+			//making a rectangle inside of a bigger rectangle
+			svg.append("rect")
+			.attr("width", "100px")
+			.attr("height", "50px")
+			.attr("x", "100px")
+			.attr("y", "20px")
+			.style("fill","orange")
+
+
+			//making a circle
+			svg.append("circle")
+			.attr("r","20px")
+			.atrr("cx","100px")
+			.attr("cy","20px")
+			.style("fill", "green");
+	</script>
+
+</body>
+</html>
